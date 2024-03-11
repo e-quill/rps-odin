@@ -14,7 +14,25 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-  playerSelection.toLowerCase() == "rock" && computerSelection == "scissor" ? "You Win! Rock beats Scissors" : "Haha"
+
+  if (playerSelection.toLowerCase() == "rock" && computerSelection == "Scissors") {
+    return "You Win! Rock beats Scissors!!";
+  } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "Rock"){
+    return "You Win! Paper beats Rock!!";
+  } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "Paper"){
+    return "You Win! Scissors beats Paper!!";
+  } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "Paper") {
+    return "You Lose! Paper beats Rock!!";
+  } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "Scissors"){
+    return "You Lose! Scissors beats Paper!!";
+  } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "Rock"){
+    return "You Lose! Rock beats Scissors!!";
+  }else {
+    return "Its a Draw!"
+  }   
+
 }
 
-console.log(getComputerChoice())
+// const playerSelection = "PAPER";
+// const computerSelection = getComputerChoice();
+// console.log(playRound(playerSelection, computerSelection));
