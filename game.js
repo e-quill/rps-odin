@@ -1,9 +1,8 @@
 function getComputerChoice(){
-  //generates numbers 0,1 or 2
+  
   max = 3 
   number = Math.floor(Math.random() * max);
   
-  //displays Rock, Paper of Scissors depending upon the randomly generated number
   if (number == 1){
     return "Rock"
   } else if (number == 2){
