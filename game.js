@@ -14,51 +14,40 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
 
-  if (playerSelection.toLowerCase() == "rock" && computerSelection == "Scissors") {
-    playerScore++
+  if (playerSelection == "rock" && computerSelection == "Scissors") {
+    
     return "You Win! Rock beats Scissors!!";
-  } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "Rock"){
-    playerScore++
+  } else if (playerSelection == "paper" && computerSelection == "Rock"){
+    
     return "You Win! Paper beats Rock!!";
-  } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "Paper"){
-    playerScore++
+  } else if (playerSelection == "scissors" && computerSelection == "Paper"){
+  
     return "You Win! Scissors beats Paper!!";
-  } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "Paper") {
-    computerScore++
+  } else if (playerSelection == "rock" && computerSelection == "Paper") {
+    
     return "You Lose! Paper beats Rock!!";
-  } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "Scissors"){
-    computerScore++
+  } else if (playerSelection == "paper" && computerSelection == "Scissors"){
+    
     return "You Lose! Scissors beats Paper!!";
-  } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "Rock"){
-    computerScore++
+  } else if (playerSelection == "scissors" && computerSelection == "Rock"){
+    
     return "You Lose! Rock beats Scissors!!";
-  }else {
+  } else {
     return `Both players chose ${computerSelection}, its a Draw!`
   }   
 
 }
 
-function playGame(){
-  round = 1;
-  playerScore = 0;
-  computerScore = 0;
-
-  for (i = 0; i < 5; i++, round++){
-    choice = prompt("Rock, Paper or Scissors?")
-    console.log(`Round ${round}`)
-    console.log(playRound(choice, getComputerChoice()))
-  }
-
+function playGame(choice){
+  console.log(playRound(choice, getComputerChoice()))
   console.log("")
 
-  console.log(`The final score is ${playerScore}:${computerScore}`)
-  if (playerScore > computerScore){
-    console.log("You have won!")
-  } else if (playerScore < computerScore) {
-    console.log("You have lost, better luck next time.")
-  } else {
-    console.log("Both of you were equally matched, its a draw.")
-  }
 }
 
-playGame()
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+
+rock.addEventListener("click", () => playGame("rock") )
+paper.addEventListener("click", () => playGame("paper") )
+scissors.addEventListener("click", () => playGame("scissors") )
