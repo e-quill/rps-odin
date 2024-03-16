@@ -12,36 +12,56 @@ function getComputerChoice(){
   }
 }
 
+function reset(){
+  playerScore = 0;
+  computerScore = 0;
+}
+
+function wincheck(playerScore, computerScore){
+  if (playerScore == 5){
+    div.innerText = `The score is ${playerScore}:${computerScore} \n Congratulations! You Win!`
+    reset()
+  } else if (computerScore == 5) {
+    div.innerText = `The score is ${playerScore}:${computerScore} \n You lose.`
+    reset()
+  }
+}
+
 function playRound(playerSelection, computerSelection){
 
-  if (playerSelection == "rock" && computerSelection == "Scissors") {
+  if (playerSelection.toString() == "rock" && computerSelection == "Scissors") {
     
-    return "You Win! Rock beats Scissors!!";
+    playerScore++
+    div.innerText = `You Win! Rock beats Scissors!! \n The score is ${playerScore}:${computerScore}`;
+
   } else if (playerSelection == "paper" && computerSelection == "Rock"){
     
-    return "You Win! Paper beats Rock!!";
+    playerScore++
+    div.innerText =  `You Win! Paper beats Rock!! \n The score is ${playerScore}:${computerScore}`;
   } else if (playerSelection == "scissors" && computerSelection == "Paper"){
-  
-    return "You Win! Scissors beats Paper!!";
+
+    playerScore++
+    div.innerText =  `You Win! Scissors beats Paper!! \n The score is ${playerScore}:${computerScore}`;
   } else if (playerSelection == "rock" && computerSelection == "Paper") {
     
-    return "You Lose! Paper beats Rock!!";
+    computerScore++
+    div.innerText =  `You Lose! Paper beats Rock!! \n The score is ${playerScore}:${computerScore}`;
   } else if (playerSelection == "paper" && computerSelection == "Scissors"){
     
-    return "You Lose! Scissors beats Paper!!";
+    computerScore++
+    div.innerText =  `You Lose! Scissors beats Paper!! \n The score is ${playerScore}:${computerScore}`;
   } else if (playerSelection == "scissors" && computerSelection == "Rock"){
     
-    return "You Lose! Rock beats Scissors!!";
+    computerScore++
+    div.innerText =  `You Lose! Rock beats Scissors!! \n The score is ${playerScore}:${computerScore}`;
   } else {
-    return `Both players chose ${computerSelection}, its a Draw!`
+    div.innerText = `Both players chose ${computerSelection}, its a Draw! \n The score is ${playerScore}:${computerScore}`
   }   
-
 }
 
 function playGame(choice){
-  console.log(playRound(choice, getComputerChoice()))
-  console.log("")
-
+  playRound(choice, getComputerChoice())
+  wincheck(playerScore, computerScore)
 }
 
 const rock = document.querySelector("#rock")
@@ -51,3 +71,10 @@ const scissors = document.querySelector("#scissors")
 rock.addEventListener("click", () => playGame("rock") )
 paper.addEventListener("click", () => playGame("paper") )
 scissors.addEventListener("click", () => playGame("scissors") )
+
+const div = document.querySelector("#display")
+
+let playerScore = 0
+let computerScore = 0
+
+
